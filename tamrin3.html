@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+    <style>
+         body{
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(38, 2, 198, 1) 0%,
+    rgba(50, 0, 150, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background-size: cover;
+  background-position: center;
+    }
+
+.container {
+  background-color: white;
+  width: 320px; 
+  padding: 25px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      cursor: default;
+    }
+
+    .fazayekhali {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    input[type="number"] {
+      width: 100px;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      outline: none;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 16px;
+      background-color: #4da6ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #3399ff;
+    }
+
+    .nokte {
+      font-size: 16px;
+      color: #333;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="title">Guess a number from 1 to 100</div>
+    
+    <div class="fazayekhali">
+      <input type="number" min="1" max="100" placeholder="?" />
+      <button>Check</button>
+    </div>
+
+    <div class="nokte">You have 10 chances</div>
+  </div>
+
+
+    <script>
+
+         let x = document.getElementsByTagName(`button`)[0];
+
+
+
+         x.addEventListener(`click`,function() {
+            alert(`salam`);
+         });
+        
+    </script>
+
+</body>
+</html>
+
