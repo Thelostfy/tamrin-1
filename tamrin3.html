@@ -85,24 +85,46 @@
     <div class="title">Guess a number from 1 to 100</div>
     
     <div class="fazayekhali">
-      <input type="number" min="1" max="100" placeholder="?" />
+      <input type="number" min="1" max="100" placeholder="?" id="khiyar" />
       <button>Check</button>
     </div>
 
-    <div class="nokte">You have 10 chances</div>
+    <div class="nokte">You have <strong id="chanceId">10</strong> chances</div>
   </div>
 
 
     <script>
 
-         let x = document.getElementsByTagName(`button`)[0];
+let x = document.getElementsByTagName("button")[0];
+let randomadad = Math.floor(Math.random() * 100) + 1;
+let chanceElement = document.getElementById("chanceId");
 
 
+x.addEventListener("click", function () {
+  let useradad = (document.getElementById("khiyar").value);
+  let chance = Number(chanceElement.textContent);
 
-         x.addEventListener(`click`,function() {
-            alert(`salam`);
-         });
-        
+  console.log("عدد وارد شده:", useradad);
+
+
+  if (chance <= 0) {
+    alert("دیگه شانس نداری");
+    return;}
+
+  if (useradad >= 1 && useradad <= 100) {
+    if (useradad === randomadad) {
+      chance++;    
+      alert("تو برنده شدی!");}
+     else {
+      chance--;
+      chanceElement.textContent = chance;
+      alert("متاسفانه باختی!");}}
+   else {
+    alert("عدد وارد شده صحیح نیست (باید بین 1 تا 100 باشد)");
+  }
+});
+         
+      
     </script>
 
 </body>
