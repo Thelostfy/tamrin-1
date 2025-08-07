@@ -59,3 +59,6 @@ function getAgeCategory(age){
 }
 getAgeCategory(18)
 getAgeCategory(14)
+
+
+// SVGRadialGradientElement
