@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>game</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg,
+          rgb(250, 204, 188));
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      background-color: white;
+      width: 320px;
+      padding: 25px 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+
+
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #line-1 {
+      height: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+    }
+
+    .sizeaxe {
+      width: 140px;
+    }
+
+    #axe1 {
+      float: left;
+    }
+
+    .axe2 {
+      float: right;
+    }
+
+    #line2 {
+      height: 200px;
+    }
+
+    #neveshte {
+      height: 10;
+      text-align: center;
+      font-family: Cursive, Fantasy;
+      color: blueviolet;
+      font-size: 25px;
+
+    }
+
+    .sizeaxelinepaiin {
+      width: 90px;
+    }
+
+    #mosht {
+      float: left;
+    }
+
+    #gheychi {
+      float: center;
+    }
+
+    #paper {
+      float: right;
+    }
+
+    .neveshtepaiin {
+      font-size: 14px;
+      color: black;
+      margin-top: 5px;
+    }
+
+    .font {
+      font-family: Cursive, Fantasy;
+      color: blueviolet;
+      font-size: 25px;
+    }
+
+    #helpBtn {
+      background: none;
+      border: none;
+      color: blueviolet;
+      font-size: 18px;
+      font-family: Cursive, Fantasy;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #helpBtn:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="line-1">
+      <img src="image/rock right.png" class="sizeaxe" id="axe1">
+      <img src="image/rock left.png" class="sizeaxe" id="axe2">
+
+    </div>
+    <div id="neveshte"><strong>Lets play</strong></div>
+    <br>
+    <div id="line2" style="display: flex; justify-content: space-around; align-items: center;">
+
+      <div style="text-align: center;">
+        <button id="mosht">
+          <img src="image/rock.png" alt="sang" class="sizeaxelinepaiin">
+        </button>
+        <div class="neveshtepaiin font">rock</div>
+      </div>
+
+
+      <div style="text-align: center;">
+        <button id="gheychi">
+          <img src="image/scissors.png" alt="gheychi" class="sizeaxelinepaiin">
+        </button>
+        <div class="neveshtepaiin font">scissors</div>
+      </div>
+
+
+      <div style="text-align: center;">
+        <button id="paper">
+          <img src="image/paper.png" alt="paper" class="sizeaxelinepaiin">
+        </button>
+        <div class="neveshtepaiin font">paper</div>
+      </div>
+
+    </div>
+
+    <button id="helpBtn">Help</button>
+  </div>
+  <script>
+    let rock = document.getElementById("mosht");
+    let scissors = document.getElementById("gheychi");
+    let paper = document.getElementById("paper");
+    let help = document.getElementById("helpBtn");
+
+    let choices = ["rock", "paper", "scissors"];
+
+    function entekhabsystem() {
+      let index = Math.floor(Math.random() * choices.length);
+      console.log(index);
+      
+      return choices[index];
+    }
+
+    function play(userChoice) {
+      let sysentekhab = entekhabsystem();
+      let havij = "";
+
+      if (userChoice === sysentekhab) {
+        havij = "مساوی شد!";
+      } else if (
+        (userChoice === "rock" && sysentekhab === "scissors") ||
+        (userChoice === "scissors" && sysentekhab === "paper") ||
+        (userChoice === "paper" && sysentekhab === "rock")
+      ) {
+        havij = "شما بردید! 🎉";
+      } else {
+        havij = "کامپیوتر برد!";
+      }
+
+      alert(`شما: ${userChoice}\nکامپیوتر: ${sysentekhab}\nنتیجه: ${havij}`);
+    }
+
+    rock.addEventListener('click', function () {
+      play("rock");
+    });
+
+    paper.addEventListener('click', function () {
+      play("paper");
+    });
+
+    scissors.addEventListener('click', function () {
+      play("scissors");
+    });
+
+    help.addEventListener("click", function () {
+      alert(`rock < paper
+rock > scissors
+paper < scissors`);
+    });
+  </script>
+</body>
+
+</html>

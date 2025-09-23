@@ -5,6 +5,8 @@
 // };
 // console.log(person);
 
+
+
 // person.age = 18;
 
 // console.log(person);
@@ -40,7 +42,7 @@
 
 // let book = {
 //     title: "Heir of fire",
-//     author: "Mir Fendereski",
+//     author: "arian salehi",
 //     tags: ["Romance","Mystery" ,"Fantasy"]
 
 // }
@@ -94,3 +96,47 @@
 
 
 //---------------------------------------
+
+
+
+
+let library = {
+    name: "ketab khane markazi",
+    books: [
+        {NameOfBook:`Harry Potter and the Sorcerer's Stone`,
+             author: `j.k rowling`,
+             genres: [`fantsy fiction`,`Children's Literature `],
+             borrowedBy: [{Fullname: `ali keyghobadi`,MemberId: 15, FromHistory: 9/18/2025}]},
+
+        {NameOfBook:`The God of the Woods`,
+            author: `Liz Moore`,
+            genres:[`Mystry`, `Domestic Fiction`],
+            borrowedBy: [{Fullname: `arian salehi`, MemberId: 14, FromHistory: `7/16/2025`}]},
+
+        {NameOfBook: `Wolf Hall`,
+            author: `Hilary Mantel`,
+             genres: [`Novel`, `Historical Fiction`],
+             borrowedBy: [{Fullname: `Ali mohammadi`, MemberId: 22, FromHistory: `9/25/2025`}]}
+    ]
+};
+
+library.books.push({NameOfBook: `Heir of fire`, author: `arian salehi`,genres: ["Romance","Mystery" ,"Fantasy"] ,borrowedBy: [{Fullname: `pariya abedi`,MemberId: 2, FromHistory: `6/13/2024`}]});
+
+
+library.books[1].genres.push(`Thriller`);
+// console.log(library);
+
+
+
+let x = [];
+for (let i = 0; i < library.books.length; i++) {
+    let havij = library.books[i].borrowedBy;
+    for (let j = 0; j < havij.length; j++) {
+        x.push(havij[j].Fullname);
+          
+    }
+    
+}
+
+
+console.log(x);

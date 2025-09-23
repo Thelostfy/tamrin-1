@@ -9,3 +9,55 @@
     
 </body>
 </html>l
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let doostan = ["Saeed", "Armin", "Sara", "Niloofar"]
+// let reversed = doostan.map(function(name){
+//     let split = name.split("");
+//     let reverse = split.reverse();
+//     let join =  reverse.join('')
+//     return join;
+// });
+
+// console.log(reversed);
+
+
+let doostan = ["Saeed", "Armin", "Sara", "Niloofar"]
+
+
+function reverse(name) {
+    let havij = [];
+    for (let i = 0; i < name.length; i++) {
+    havij.unshift(name[i])   
+}
+
+    return havij.join("");
+}
+let gojeh = [];
+for (let a = 0; a < doostan.length; a++) {
+let x = reverse(doostan[a])
+// console.log(x);
+
+ gojeh.unshift(x);
+
+}
+
+
+console.log(gojeh);
