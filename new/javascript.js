@@ -1,18 +1,48 @@
 let button = document.getElementById("Addbutton");
 let text = document.getElementById("TextLine");
-let divtext = document.getElementById("userText");
+let complateUsertext = document.getElementById("userText");
+let i = 0;
 
 
-text.addEventListener("input"  , function() {
-    button.addEventListener("click" , function () {
-        
-    })
-})
+
+
 button.addEventListener("click" , function () {
-    let createelement = document.createElement("div");
-createelement.id = "adddiv";
-createelement.textContent = text.value;
-divtext.appendChild(createelement);
-text.value = "";
+
+
+    
+   let createDivElement = document.createElement(`div`)
+   createDivElement.className = `USerCLass`;
+
+   let CheckboxInput = document.createElement("input");
+   CheckboxInput.type =  "checkbox";
+   CheckboxInput.id = i;   
+    createDivElement.appendChild(CheckboxInput);
+    
+   let CreateLabel = document.createElement("label");
+    CreateLabel.htmlFor = "text";
+    CreateLabel.textContent = text.value;
+    createDivElement.appendChild(CreateLabel);
+
+    let removeIcon = document.createElement(`button`);
+    removeIcon.className = 'removeStyle';
+    removeIcon.textContent = "❌";
+    removeIcon.addEventListener("click" , function() {
+        let x = confirm(`are you sure?`)
+        if (x === true) {
+            createDivElement.remove();
+        }
+       
+    })
+
+    createDivElement.appendChild(removeIcon);
+
+
+    
+
+
+    complateUsertext.appendChild(createDivElement);
+
+        text.value = "";
+    i++;
 
 })

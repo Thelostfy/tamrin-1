@@ -1,5 +1,7 @@
 body{
     background: linear-gradient(45deg  , rgb(1, 14, 109) , rgb(0, 130, 165)) ;
+    align-items: center;
+    font-family: fantasy;
 }
 #container{
     background-color: whitesmoke;
@@ -12,34 +14,29 @@ body{
       padding: 25px 30px;
       border-radius: 16px;
 }
-#HeadLine{
-    height: auto ;
-    align-items: center;
-    font-family: fantasy;
+.CenterLine{
+  height: 50px;
 }
-#CenterLine{
-    height: auto;
-    padding: 25px 30px;
-      border-radius: 16px;
-      display: flex;
-      align-items: start;
+#CenterLine input {
+  padding: 10px;
+  border-radius: 20px;
+  width: 94%;
+  background-color: #ddd;
+  color: black;
 }
-#TextLine{
-    width: 250px;
-    background-color: rgb(182, 197, 197);
-    font-family :Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
-    padding: 5px 6;
-      border-radius: 4px;
-    
-    }
 #Addbutton{
-    background-color: red;
-    color: white;
-    padding: 5px 6;
-      border-radius: 4px;
+  position: relative;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #Ed9121;
+  color: white;
+  left: 278px;
+  top: -39px;
     
 }
-#userText {
-       
+.removeStyle{
+  border: hidden;
+  background-color: whitesmoke;
+  float: right;
 }
 
