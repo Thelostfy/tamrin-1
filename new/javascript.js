@@ -1,7 +1,7 @@
 let button = document.getElementById("Addbutton");
 let text = document.getElementById("TextLine");
 
-let todoList = ["item1", "item2"];
+let todoList = [{titel: "hamoom beram", isFinished: false},{titel: "mesvak bezanam", isFinished: false}];
 
 let displayitems = () => {
     let complateUsertext = document.getElementById("userText");
@@ -17,12 +17,15 @@ let displayitems = () => {
     let CheckboxInput = document.createElement("input");
     CheckboxInput.type =  "checkbox";
     CheckboxInput.id = i;   
+    CheckboxInput.addEventListener("click", function(){
+        todoList[i].isFinished = CheckboxInput.checked;
+    })
      createDivElement.appendChild(CheckboxInput);
 
      
     let CreateLabel = document.createElement("label");
      CreateLabel.htmlFor = i;
-     CreateLabel.textContent = todoList[i];
+     CreateLabel.textContent = todoList[i].titel;
      createDivElement.appendChild(CreateLabel);
  
 
@@ -42,7 +45,7 @@ let displayitems = () => {
  
  
      
- 
+     localStorage.setItem(`USERText` , JSON.stringify(todoList));
         // userSaveArray.push(createDivElement);
      complateUsertext.appendChild(createDivElement);
      
@@ -55,16 +58,27 @@ button.addEventListener("click" , function () {
         alert(`yechizin benevis`)
         return;
      };
-     if (todoList.includes(text.value)) {
+    //  if (todoList.includes(text.value)) {
+    //     alert(`tekrari`);
+    //     return;
+    //  };
+    let isfinded = todoList.find(x => x.titel.toUpperCase() === text.value.toUpperCase());
+     if (isfinded) {
         alert(`tekrari`);
         return;
-     };
-    todoList.push(text.value);
+     }
+    todoList.push({titel: text.value ,isFinished: false});
         displayitems();    
         text.value = "";
-
+     localStorage.setItem(`USERText` , JSON.stringify(todoList));
 });
 
 document.addEventListener("DOMContentLoaded" , () => {
+    // // alert(todoList.isFinished);
+    // let saved = localStorage.getItem("USERText");
+    // if (saved){
+    //     todoList = JSON.parse(saved)
+    // }
+    // alert(JSON.stringify(todoList[i].titel));
     displayitems();
 });
