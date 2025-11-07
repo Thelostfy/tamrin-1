@@ -1,7 +1,7 @@
 let button = document.getElementById("Addbutton");
 let text = document.getElementById("TextLine");
 
-let todoList = [{titel: "hamoom beram", isFinished: false},{titel: "mesvak bezanam", isFinished: false}];
+let todoList = [{titel: "hamoom beram", isFinished: false},{titel: "mesvak bezanam", isFinished: true}];
 
 let displayitems = () => {
     let complateUsertext = document.getElementById("userText");
@@ -20,6 +20,7 @@ let displayitems = () => {
     CheckboxInput.addEventListener("click", function(){
         todoList[i].isFinished = CheckboxInput.checked;
     })
+        CheckboxInput.checked = todoList[i].isFinished;
      createDivElement.appendChild(CheckboxInput);
 
      
