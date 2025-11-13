@@ -1,85 +1,75 @@
-let button = document.getElementById("Addbutton");
-let text = document.getElementById("TextLine");
+// shroo az aval  neveshtan
 
-let todoList = [{titel: "hamoom beram", isFinished: false},{titel: "mesvak bezanam", isFinished: true}];
+let AddButton = document.getElementById("Addbutton");
+let TextLineInput = document.getElementById("TextLine");
 
-let displayitems = () => {
-    let complateUsertext = document.getElementById("userText");
-    complateUsertext.innerHTML = '';
+let ToDoListArray = [{ tag: "hamoom beram", isFinished: false }, { tag: "hamoom beram", isFinished: false }]
+
+let DisplayItem = () => {
+
+    let UserToDoDiv = document.getElementById("userToDo");
+    UserToDoDiv.innerHTML = '';
+
+    for (let i = 0; i < ToDoListArray.length; i++) {
+
+        // create div
+        let NewDiv = document.createElement("div");
+        NewDiv.className = "userdivclasss";
+
+        //create checkbox
+        let inputCheckBox = document.createElement("input");
+        inputCheckBox.type = "checkbox";
+        inputCheckBox.id = i;
+        inputCheckBox.checked = ToDoListArray[i].isFinished;
+        inputCheckBox.addEventListener("click", function () {
+            ToDoListArray[i].isFinished = inputCheckBox.checked;
+        });
+        NewDiv.appendChild(inputCheckBox);
+        //create label
+        let Label = document.createElement("label");
+        Label.textContent = ToDoListArray[i].tag;
+        Label.htmlFor = i;
+        NewDiv.appendChild(Label);
+
+        UserToDoDiv.appendChild(NewDiv);
+        // create removeIcon
+        let removeButton = document.createElement('button');
+        removeButton.className = 'removeStyle';
+        removeButton.textContent = "❌";
+        removeButton.addEventListener("click", () => {
+            let taeid = confirm(`are you sure?`);
+            if (taeid === true) {
+                ToDoListArray.splice(i, 1);
+                DisplayItem();
+            }
+            localStorage.setItem("userData", JSON.stringify(ToDoListArray));
 
 
-    for (let i = 0; i < todoList.length; i++) {
-
-
-        let createDivElement = document.createElement(`div`)
-    createDivElement.className = `USerCLass`;
- 
-    let CheckboxInput = document.createElement("input");
-    CheckboxInput.type =  "checkbox";
-    CheckboxInput.id = i;   
-    CheckboxInput.addEventListener("click", function(){
-        todoList[i].isFinished = CheckboxInput.checked;
-    })
-        CheckboxInput.checked = todoList[i].isFinished;
-     createDivElement.appendChild(CheckboxInput);
-
-     
-    let CreateLabel = document.createElement("label");
-     CreateLabel.htmlFor = i;
-     CreateLabel.textContent = todoList[i].titel;
-     createDivElement.appendChild(CreateLabel);
- 
-
-     let removeIcon = document.createElement(`button`);
-        removeIcon.className = 'removeStyle';
-        removeIcon.textContent = "❌";
-        removeIcon.addEventListener("click" , function() {
-         let x = confirm(`are you sure?`);
-            if (x === true) {
-                 todoList.splice(i , 1);
-                 displayitems();
-             }
-             
-     })
- 
-     createDivElement.appendChild(removeIcon);
- 
- 
-     
-     localStorage.setItem(`USERText` , JSON.stringify(todoList));
-        // userSaveArray.push(createDivElement);
-     complateUsertext.appendChild(createDivElement);
-     
-}
-    
+        })
+        NewDiv.appendChild(removeButton);
     }
-    
-button.addEventListener("click" , function () {
-    if (text.value === "") {
-        alert(`yechizin benevis`)
-        return;
-     };
-    //  if (todoList.includes(text.value)) {
-    //     alert(`tekrari`);
-    //     return;
-    //  };
-    let isfinded = todoList.find(x => x.titel.toUpperCase() === text.value.toUpperCase());
-     if (isfinded) {
-        alert(`tekrari`);
-        return;
-     }
-    todoList.push({titel: text.value ,isFinished: false});
-        displayitems();    
-        text.value = "";
-     localStorage.setItem(`USERText` , JSON.stringify(todoList));
-});
 
-document.addEventListener("DOMContentLoaded" , () => {
-    // // alert(todoList.isFinished);
-    // let saved = localStorage.getItem("USERText");
-    // if (saved){
-    //     todoList = JSON.parse(saved)
-    // }
-    // alert(JSON.stringify(todoList[i].titel));
-    displayitems();
-});
+}
+AddButton.addEventListener("click", () => {
+    if (TextLineInput.value === "") {
+        alert(`yechizi benevis`)
+        return;
+    };
+
+    let isfinded = ToDoListArray.find(x => x.tag.toUpperCase() === TextLineInput.value.toUpperCase());
+    if (isfinded) {
+        alert(`tekrariye`);
+        return;
+    }
+    ToDoListArray.push({ tag: TextLineInput.value, isFinished: false });
+    DisplayItem();
+    localStorage.setItem("userData", JSON.stringify(ToDoListArray));
+    TextLineInput.value = "";
+
+})
+document.addEventListener("DOMContentLoaded", function () {
+    let savedData = localStorage.getItem("userData");
+    if (savedData) {
+        ToDoListArray = JSON.parse(savedData);
+        DisplayItem();
+    }})
