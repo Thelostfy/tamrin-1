@@ -55,3 +55,8 @@ localStorage.setItem("BAZIhayeghabli" , JSON.stringify(XO))
     })
 
 }
+
+// document.addEventListener("DOMContentLoaded" , ()=>{
+//     let x =localStorage.getItem(`BAZIhayeghabli`);
+//     alert(x)
+// })
